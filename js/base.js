@@ -27,3 +27,48 @@ var markerList = [
  		location: {lat: 23.2286087, lng: 72.6211846}
  	}
 ];
+
+
+function Marker(data) {
+   this.title = data.title;
+   this.location = data.location;
+}
+
+function MarkerListViewModel() {
+  var self = this;
+
+  console.log("From marker");
+
+  self.listFilter = ko.observable('');
+
+  // console.log(self.listFilter());
+ 
+  self.markerList = markerList;
+ 
+  // self.markers = ko.observableArray(markerList);
+  self.markers = ko.computed(function () {
+    var filter = self.listFilter();
+
+
+    if (filter === '') {
+      console.log(filter);
+      return self.markerList
+    } else {
+      var tempList = self.markerList.slice();
+
+      console.log("New List");
+      console.log("Filter "+filter);
+      return tempList.filter(function (marker) {
+        console.log(marker);
+        console.log(" Res "+marker.title.indexOf(filter))
+        return marker.title.toLowerCase().indexOf(filter.toLowerCase()) > -1
+      })
+    }
+  });
+
+  self.filterList = function () {
+
+  }
+}
+
+ko.applyBindings(new MarkerListViewModel()); 

@@ -24,3 +24,11 @@
 	margin-left: 25px;
     padding: 15px;
 }
+
+.markers-data li {
+    border-bottom: 1px solid #505050;
+    padding: 20px;
+}
+.markers-data li a {
+    text-decoration: none;
+}
