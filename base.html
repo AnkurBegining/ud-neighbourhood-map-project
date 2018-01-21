@@ -7,9 +7,9 @@
 <body>
 <div class="container-fluid">
     <div class="opt-box">
-        <h1>Find temple of my town</h1>
+        <h2 id="PageIndicatorText">Find temple of my town</h1>
         <div>
-            <p>Our temple</p>
+            <p id="ourTemple">Our temple</p>
             <div>
                  <input class="filter-input" type="text" data-bind="value:listFilter,valueUpdate: 'afterkeydown'" placeholder="Filter">
             </div>
@@ -22,6 +22,7 @@
         <div id="map"></div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD32699vDflw_L8kV2B_bt9Zig8RVi4pnM&callback=initMap"
         async defer></script>
 <script src="js/base.js"></script>
