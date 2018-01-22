@@ -152,6 +152,9 @@ var markers = [];
         if (place.location.address !== undefined) {
           markerHtml += place.location.address + '<br>';
         }
+        else{
+          markerHtml += "Sorry we couldn't load this address" + '<br>';
+        }
       }
       catch(e){
         console.log("Location couldn't be fetched");
