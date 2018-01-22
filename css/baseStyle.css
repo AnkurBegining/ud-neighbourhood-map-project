@@ -11,6 +11,7 @@
 .map-container {
     height: 100%;
     width: 100%;
+    background-color: #000000ba;
 }
 
 #PageIndicatorText{
@@ -35,8 +36,13 @@
     text-decoration: none;
 }
 .sliceBar{
-	background-color: black;
+	width: 400px;
+	background-color: #000000ba;
 	padding:5px;
+}
+
+.hiddenSlicebar{
+    margin-right: -404px;
 }
 h2, p{
 	color: white;
@@ -57,4 +63,6 @@ h2, p{
 }
 .sidebar-toggle .text {
     margin-left: 32px;
+    color: white;
+    font-size: 20px;
 }

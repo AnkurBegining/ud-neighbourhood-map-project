@@ -146,9 +146,13 @@ var markerList = [
       var place = data.response.venues[0];
       var markerHtml = '<strong>' + marker.title + '</strong><br>';
 
-      if (place.categories.length) {
+      try{
+        if (place.categories.length) {
         markerHtml += '<strong>Category:</strong>' + place.categories[0].name + '<br>';
       }
+      }
+      catch(e){
+       }
 
       markerHtml += '<strong>Address:</strong>';
       if (place.location.address !== undefined) {
@@ -221,7 +225,7 @@ var markerList = [
 
     // sidebar toggle for responsiveness
     $('.sidebar-toggle').click(function () {
-      $('.opt-box').toggleClass('opt-hide');
+      $('.sliceBar').toggleClass('hiddenSlicebar');
     });
   });
 }
