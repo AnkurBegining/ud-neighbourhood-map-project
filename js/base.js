@@ -13,7 +13,7 @@ var bounds = new google.maps.LatLngBounds();
 // Initalizing info window
 var largeInfoWindow = new google.maps.InfoWindow();
 
-var markerList = [
+var templeList = [
 	{
 		title: 'Swaminarayan Akshardham', 
 		location: {lat: 23.2293087, lng: 72.6741314},
@@ -51,11 +51,11 @@ var markerList = [
   // initialises markers from list
   function initMarkers() {
     // creating marker from places
-    for (var i = 0; i < markerList.length; i++) {
+    for (var i = 0; i < templeList.length; i++) {
       var marker = new google.maps.Marker({
-        position: markerList[i].location,
+        position: templeList[i].location,
         map: map,
-        title: markerList[i].title,
+        title: templeList[i].title,
         animation: google.maps.Animation.DROP,
         id: i
       });
@@ -179,7 +179,7 @@ var markerList = [
     self.listFilter = ko.observable('');
 
     // initialises marker list
-    self.markerList = markerList;
+    self.markerList = templeList;
 
     //filters marker based on supplied filter value
     self.markers = ko.computed(function () {
