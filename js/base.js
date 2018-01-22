@@ -1,7 +1,12 @@
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 23.2293105, lng: 72.6653764},
-    zoom: 16
+    zoom: 7
+  });
+  $(document).ready(function() {
+    google.maps.event.addListener(map, "idle", function(){
+        google.maps.event.trigger(map, 'resize'); 
+    });
   });
 
 var bounds = new google.maps.LatLngBounds();
@@ -157,18 +162,20 @@ var markers = [];
         }
       }
       catch(e){
-        console.log("Location couldn't be fetched");
+        console.log("Location  Address couldn't be fetched");
       }
-      
-      try{
-        markerHtml += place.location.city + ',' + place.location.country;
+      if (place.location.city !== undefined){
+          markerHtml += place.location.city + ', <br>';
       }
-      catch(e){
-        markerHtml += "No information about city" + ',' + "No information about location";
-        console.log("could not parse the information from the third party api");
+      else{
+        markerHtml += "Sorry we couldn't load city of this location" + ', <br>';
       }
-      
-
+      if (place.location.country !== undefined){
+          markerHtml += place.location.country;
+      }
+      else{
+        markerHtml += "Sorry we couldn't load country of this location";
+      }
       infowindow.setContent(markerHtml);
 
     })
@@ -230,6 +237,7 @@ var markers = [];
     });
     $('.sidebar-toggle').click(function () {
       $('.sliceBar').toggleClass('hiddenSlicebar');
+          google.maps.event.trigger(map, "resize");
     });
   });
 }
