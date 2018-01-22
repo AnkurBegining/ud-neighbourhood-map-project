@@ -4,6 +4,8 @@
 
 #map {
     height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .map-container {
@@ -17,7 +19,7 @@
 }
 
 .container-fluid {
-    height:100vh;
+    
     display: flex;
 }
 .filter-input{
@@ -31,4 +33,28 @@
 }
 .markers-data li a {
     text-decoration: none;
+}
+.sliceBar{
+	background-color: black;
+	padding:5px;
+}
+h2, p{
+	color: white;
+}
+.sidebar-toggle {
+    margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.sidebar-toggle .menu, .sidebar-toggle .menu:before, .sidebar-toggle .menu:after {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: #000;
+    content: " ";
+    display: block;
+}
+.sidebar-toggle .text {
+    margin-left: 32px;
 }

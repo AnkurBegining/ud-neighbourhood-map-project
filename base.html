@@ -2,11 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Neighbourhood Map</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/baseStyle.css">
 </head>
 <body>
 <div class="container-fluid">
-    <div class="opt-box">
+    <div class="sliceBar">
         <h2 id="PageIndicatorText">Find temple of my town</h1>
         <div>
             <p id="ourTemple">Our temple</p>
@@ -19,6 +21,12 @@
         </div>
     </div>
     <div class="map-container">
+        <div class="sidebar-toggle">
+            <div class="menu"></div>
+            <span class="text"></span>
+            <span class="text"></span>
+            <span class="text"></span>
+        </div>
         <div id="map"></div>
     </div>
 </div>
