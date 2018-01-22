@@ -236,7 +236,5 @@ mapLoadError shows error when google maps failed to load
 
 */
 mapLoadError = function() {
-  console.log("Google map failed to load");
   alert('Sorry for the inconvience caused: Google maps failed to load. Please try again ');
-
 };
