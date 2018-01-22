@@ -14,6 +14,29 @@
     background-color: #000000ba;
 }
 
+.sidebar-toggle .toogle, .sidebar-toggle .menu:before, .sidebar-toggle .menu:after {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    content: " ";
+    display: block;
+}
+.navbar-inverse{
+	background-color: #000000ba;
+	margin-bottom: 0px;
+}
+.sidebar-toggle #toogle {
+    margin-left: 32px;
+    color: white;
+    font-size: 20px;
+}
+#toogle{
+	margin-left: 32px;
+    color: white;
+    font-size: 20px;
+}
+
 #PageIndicatorText{
 	font-family: cursive;
     margin-left: 25px;
@@ -53,16 +76,5 @@ h2, p{
     cursor: pointer;
 }
 
-.sidebar-toggle .menu, .sidebar-toggle .menu:before, .sidebar-toggle .menu:after {
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: #000;
-    content: " ";
-    display: block;
-}
-.sidebar-toggle .text {
-    margin-left: 32px;
-    color: white;
-    font-size: 20px;
-}
+
+

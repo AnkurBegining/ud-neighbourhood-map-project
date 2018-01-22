@@ -1,16 +1,11 @@
 function initMap() {
-
-  // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 23.2293105, lng: 72.6653764},
     zoom: 16
   });
 
-
-// initialising bound
 var bounds = new google.maps.LatLngBounds();
 
-// Initalizing info window
 var largeInfoWindow = new google.maps.InfoWindow();
 
 var templeList = [
@@ -43,14 +38,12 @@ var templeList = [
  		index: 4
  	}
 ];
-
-
-// Initialisng markers
-  var markers = [];
-
-  // initialises markers from list
-  function initMarkers() {
-    // creating marker from places
+var markers = [];
+/*
+  init the marker to start: function used
+*/
+  function init() {
+    // let's create marker from the place
     for (var i = 0; i < templeList.length; i++) {
       var marker = new google.maps.Marker({
         position: templeList[i].location,
@@ -59,16 +52,13 @@ var templeList = [
         animation: google.maps.Animation.DROP,
         id: i
       });
-
+      // Push in the array
       markers.push(marker);
 
       bounds.extend(marker.position);
 
-      // adding info window to marker
       marker.addListener('click', markerClickHandler);
     }
-
-    // Filts bound as per markers
     map.fitBounds(bounds);
   }
 
@@ -128,7 +118,9 @@ var templeList = [
     }
   }
 
-  // Adds location info from 'foursquare api' to infowindow
+  /* 
+    Fetching location info from 'foursquare api' to infowindow and adding it
+  */
   function addLocationInfo(marker, infowindow) {
     // console.log(marker);
     var req_url = 'https://api.foursquare.com/v2/venues/search?v=20161016';
@@ -139,7 +131,9 @@ var templeList = [
 
     req_url += '&client_id=' + client_id + '&client_secret=' + client_secret + '&ll=' + ll + '&query=' + query;
 
-    // Makes ajax request to load data from third party api
+    /*
+      Get the details from the foursqure api
+    */
     $.getJSON(req_url, function (data) {
       console.log(data);
 
@@ -153,35 +147,48 @@ var templeList = [
       }
       catch(e){
        }
-
-      markerHtml += '<strong>Address:</strong>';
-      if (place.location.address !== undefined) {
-        markerHtml += place.location.address + '<br>';
+      try{
+        markerHtml += '<strong>Address:</strong>';
+        if (place.location.address !== undefined) {
+          markerHtml += place.location.address + '<br>';
+        }
       }
-
-      markerHtml += place.location.city + ',' + place.location.country;
+      catch(e){
+        console.log("Location couldn't be fetched");
+      }
+      
+      try{
+        markerHtml += place.location.city + ',' + place.location.country;
+      }
+      catch(e){
+        markerHtml += "No information about city" + ',' + "No information about location";
+        console.log("could not parse the information from the third party api");
+      }
+      
 
       infowindow.setContent(markerHtml);
 
     })
+    /*
+      if failing in loading then show the error
+    */
       .fail(function () {
-      //Called when request fails
-        infowindow.setContent("Error Loading Details");
+        infowindow.setContent("Sorry for the inconvience caused, there is error in loading the call");
       });
 
   }
 
-  // Marker model
+  /*
+    Making marker model
+  */
   function MarkerListViewModel() {
     var self = this;
-
-    // creates marker filter value
     self.listFilter = ko.observable('');
-
-    // initialises marker list
     self.markerList = templeList;
 
-    //filters marker based on supplied filter value
+    /*
+      Let's set based on filter value
+    */
     self.markers = ko.computed(function () {
       var filter = self.listFilter();
       if (filter === '') {
@@ -198,39 +205,38 @@ var templeList = [
 
     };
 
-    // refreshes markers based on filter value
+    /*
+      Set the refreance based on filter
+    */
     self.refreshMarkers = function () {
       refreshMarkers(self.markers);
     };
-
-    // calls when an item is clicked from list
     self.itemClicked = function (markerIndex) {
       showOnly(markerIndex);
     };
   }
-
-  // Initialises the functiom on document load
   $(document).ready(function () {
     // initialises markers
-    initMarkers();
+    init();
 
     // Knockoutjs initialisation
     var MLVM = new MarkerListViewModel();
     ko.applyBindings(MLVM);
-
-    // Adds function binding on filter value change
     MLVM.listFilter.subscribe(function () {
       MLVM.refreshMarkers();
     });
-
-    // sidebar toggle for responsiveness
     $('.sidebar-toggle').click(function () {
       $('.sliceBar').toggleClass('hiddenSlicebar');
     });
   });
 }
 
-// mapLoadError shows error when google maps failed to load
+/* 
+mapLoadError shows error when google maps failed to load
+
+*/
 mapLoadError = function() {
+  console.log("Google map failed to load");
   alert('Sorry for the inconvience caused: Google maps failed to load. Please try again ');
+
 };

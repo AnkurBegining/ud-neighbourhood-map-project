@@ -1,12 +1,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Neighbourhood Map</title>
+    <title>Our Temple</title>
     <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Link to my self defined css -->
     <link rel="stylesheet" href="css/baseStyle.css">
+
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Our Temple</a>
+    </div>
+   </div>
+</nav>
 <div class="container-fluid">
     <div class="sliceBar">
         <h2 id="PageIndicatorText">Find temple of my town</h1>
@@ -22,8 +39,8 @@
     </div>
     <div class="map-container">
         <div class="sidebar-toggle">
-            <div class="menu"></div>
-            <span class="text">Toggle</span>
+            <div class="toggle"></div>
+            <p id="toggle">Toggle</p>
         </div>
         <div id="map"></div>
     </div>
