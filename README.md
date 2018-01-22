@@ -21,9 +21,18 @@ For running this project we need to follow very simple step.
 There is no any strict prerequisites. I have all the link in the base.html file only. You don't need to download any file 
 of jQuery, knockout or anything extra.
 
-```
-Give examples
-```
+### Demonstrations and screenshot of project
+
+#### Home page
+![alt tag](https://i.imgur.com/C9UAJCZ.png "Home page")
+
+#### Loaction details pop out after the click
+![alt tag](https://i.imgur.com/zQZid9b.png "Location Detail")
+
+#### Clicking on the temple from list too would also pop out the details
+![alt tag](https://i.imgur.com/97VWUYD.png "Click from list and pop out the result")
+
+'You would be able to see all the feature when you would run this project. Small demo screen shot is provided above'
 
 ### Skills and devlopment area used
 
